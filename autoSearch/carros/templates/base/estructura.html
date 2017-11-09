@@ -1,0 +1,41 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>  </title>
+<meta name="description" content="{% block description %}{% endblock %}"/>
+
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+        <link href="{% static '../css/local.min.css' %}" rel="stylesheet">
+
+        </head>
+        <body>
+                <h1 class="text-center"> Carros </h1>
+{% for Car in object_list %}
+
+<div class= "btn btn-info">{{Car.make}}</div>
+<br>
+<div class= "btn btn-warning">{{Car.Type}}</div>
+<br>
+<div class= "btn btn-link">{{Car.year}}</div>
+<br>
+<div class= "btn btn-link">{{Car.colour}}</div>
+<br>
+<div class= "btn btn-link">{{Car.price}}</div>
+<br>
+<div class= "btn btn-link">{{Car.created}}</div>
+<br>
+
+ {% endfor %}
+
+ <!-- All that javascript -->
+        <script src="../jquery.min.js"></script>
+        <script src="{% static "../js/bootstrap.min.js" %}"></script>
+        </body>
+
+</html>
