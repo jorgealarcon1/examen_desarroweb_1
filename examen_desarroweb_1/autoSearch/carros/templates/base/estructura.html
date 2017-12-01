@@ -1,0 +1,120 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title> Examen </title>
+<meta name="description" content="{% block description %}{% endblock %}"/>
+
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link href="{% static 'static/bulma/css/bulma.css' %}" rel="stylesheet">
+        <link href="{% static 'static/bulma/css/forum.css' %}" rel="stylesheet">
+
+        </head>
+        <body>
+
+  <nav class="navbar is-white topNav">
+    <div class="container">
+      <div class="navbar-brand">
+        </a>
+        <div class="navbar-burger burger" data-target="topNav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="topNav" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="forum.html">
+            Programacion Web
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="button is-small">
+                  <span class="icon">
+                    <i class="fa fa-user-plus"></i>
+                  </span>
+                  <span>
+                    Logout
+                  </span>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button is-small is-info is-outlined">
+                  <span class="icon">
+                    <i class="fa fa-user"></i>
+                  </span>
+                  <span>Login</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar is-white">
+    <div class="container">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item is-active" href="#">Inicio</a>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            {%block search%}
+            {%endblock%}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="container">
+    <div class="columns">
+      <div class="column is-3">
+        <a class="button is-primary is-block is-alt is-large" href="/create">New Car</a>
+        <aside class="menu">
+          <p class="menu-label">
+            Tags
+          </p>
+          <ul class="menu-list">
+            <li><a>Uno</a></li>
+            <li><a>Dos</a></li>
+            <li><a>Tres</a></li>
+          </ul>
+        </aside>
+
+      </div>
+
+      <div class="column is-9">
+        <div class="box content">
+          {%block content%}
+          {%endblock%}
+
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script async type="text/javascript" src={% static 'static/bulma/js/bulma.js' %}></script>
+</body>
+</html>

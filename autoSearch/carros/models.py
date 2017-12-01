@@ -9,9 +9,9 @@ class Car(models.Model):
     #relacion
     make = models.CharField(max_length=100)
     Type = models.CharField(max_length=100)
-    year = models.DateField(auto_now_add = False)
+    year = models.DateField(max_length=100)
     colour = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=10, decimal_places=4)
+    price = models.DecimalField(max_digits=10, decimal_places=4, default=0.00)
     created = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):

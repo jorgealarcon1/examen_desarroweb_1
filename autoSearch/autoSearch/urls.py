@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from carros import views, urls, urls, models
-from carros.views import car_list, car_detail
+from carros.views import prueba, car_list, car_detail, CarCreateView, CArDeleteView, CarUpdateView, CarListView
 
 
 
@@ -26,11 +26,28 @@ from carros.views import car_list, car_detail
     #from . import views
 
 urlpatterns = [
+
+#    url(r'prueba/^$', prueba, name = 'prueba'),
+
     url(r'^admin/', admin.site.urls),
     url(r'^carros/', include('carros.urls')),
     url(r'^',include('carros.urls', namespace = "templates")),
+
+    url(r'^list$', car_list.as_view(), name='CarList'),
+
+    url(r'^lists$', CarListView.as_view(), name='CarLists'),
+
     url(r'^detail/(?P<pk>[0-9]+)/$', car_detail.as_view(),name='CarDetail'),
-    url(r'^list$',car_list.as_view(), name='CarList'),
+
+    url(r'^create$', CarCreateView.as_view(), name = 'CarCreateView'),
+
+    url(r'^update/(?P<pk>[0-9]+)/edit/$', CarUpdateView.as_view(), name = 'CarUpdate'),
+
+    url(r'^delete/(?P<pk>[0-9]+)/delete/$', CArDeleteView.as_view(), name = 'CarDelete'),
+
     #url(r'list/^$', car_list, name='car_list.html'),
     #url(r'^carros/', include('carros.urls', namespace='carros', app_name='autos')),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
