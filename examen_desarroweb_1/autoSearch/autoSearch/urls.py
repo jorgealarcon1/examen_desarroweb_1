@@ -31,25 +31,29 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
 
+    url(r'^',include('carros.urls', namespace = "templates")),
+    #url(r'^$', views.prueba, name='home.html'),
+
     url(r'^carros/', include('carros.urls')),
 
-    url(r'^',include('carros.urls', namespace = "templates")),
+#    url(r'^list$', car_list.as_view(), name='CarList'),
 
-    url(r'^list$', car_list.as_view(), name='CarList'),
+    url(r'^list$', CarListView.as_view(), name='CarLists'),
 
-    url(r'^lists$', CarListView.as_view(), name='CarLists'),
-
-    url(r'^detail/(?P<pk>[0-9]+)/$', car_detail.as_view(),name='CarDetail'),
+    url(r'^detail/(?P<pk>\d+)/$', car_detail.as_view(),name='CarDetail'),
 
     url(r'^create$', CarCreateView.as_view(), name = 'CarCreateView'),
 
-    url(r'^update/(?P<pk>[0-9]+)/edit/$', CarUpdateView.as_view(), name = 'CarUpdate'),
+    url(r'^update/(?P<pk>\d+)/edit/$', CarUpdateView.as_view(), name = 'CarUpdate'),
 
-    url(r'^delete/(?P<pk>[0-9]+)/delete/$', CArDeleteView.as_view(), name = 'CarDelete'),
+    url(r'^delete/(?P<pk>\d+)/delete/$', CArDeleteView.as_view(), name = 'CarDelete'),
+
+    #url(r'^basic/search_form/$', CarListView.as_view(), name='CarLists'),
 
     #url(r'list/^$', car_list, name='car_list.html'),
     #url(r'^carros/', include('carros.urls', namespace='carros', app_name='autos')),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

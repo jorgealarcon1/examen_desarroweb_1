@@ -3,7 +3,7 @@
   <input type="submit" name="" value="Add New Car">
 </form> -->
 
-<form class="form"  method="POST" action="{% if action_url %}{{ action_url }}{% endif %}" enctype="multipart/form-data" >
+<form class="form"  method="POST" action="{% if action_url %}{{ action_url }}{% endif %}" >
 
       {% csrf_token %}
       <!-- <label for="id_content">Content:</label></br> -->
